@@ -6,10 +6,7 @@
  * Time: 12:12
  */
     try{
-        $user = "root";
-        $pass = "";
-        $pdo = new PDO("mysql:host=127.0.0.1;dbname=mediatest;charset=utf8", $user, $pass);
-
+        require_once 'database_conf.php';
         //ファイルアップロードがあったとき
         if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error']) && $_FILES["upfile"]["name"] !== ""){
             //エラーチェック
@@ -55,7 +52,7 @@
             $fname = hash("sha256", $fname);
 
             //画像・動画をDBに格納．
-            $sql = "INSERT INTO media(fname, extension, raw_data) VALUES (:fname, :extension, :raw_data);";
+            $sql = "INSERT INTO video(fname, extension, raw_data) VALUES (:fname, :extension, :raw_data);";
             $stmt = $pdo->prepare($sql);
             $stmt -> bindValue(":fname",$fname, PDO::PARAM_STR);
             $stmt -> bindValue(":extension",$extension, PDO::PARAM_STR);
@@ -90,7 +87,7 @@
 
     <?php
     //DBから取得して表示する．
-    $sql = "SELECT * FROM media ORDER BY id;";
+    $sql = "SELECT * FROM video ORDER BY id;";
     $stmt = $pdo->prepare($sql);
     $stmt -> execute();
     while ($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
