@@ -41,7 +41,7 @@
             }
             else{
                 echo "非対応ファイルです．<br/>";
-                echo ("<a href=\"index.php\">戻る</a><br/>");
+                echo ("<a href=\"import.php\">戻る</a><br/>");
                 exit(1);
             }
 
@@ -77,7 +77,7 @@
 </head>
 
 <body>
-    <form action="index.php" enctype="multipart/form-data" method="post">
+    <form action="import.php" enctype="multipart/form-data" method="post">
         <label>画像/動画アップロード</label>
         <input type="file" name="upfile">
         <br>
@@ -95,10 +95,10 @@
         //動画と画像で場合分け
         $target = $row["fname"];
         if($row["extension"] == "mp4"){
-            echo ("<video src=\"import_media.php?target=$target\" width=\"426\" height=\"240\" controls></video>");
+            echo ("<video src=\"output.php?target=$target\" width=\"426\" height=\"240\" controls></video>");
         }
         elseif($row["extension"] == "jpeg" || $row["extension"] == "png" || $row["extension"] == "gif"){
-            echo ("<img src='import_media.php?target=$target'>");
+            echo ("<img src='output.php?target=$target'>");
         }
         echo ("<br/><br/>");
     }
