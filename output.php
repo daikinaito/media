@@ -9,7 +9,7 @@
         $target = $_GET["target"];
     }
     else{
-        header("Location: index.php");
+        header("Location: import.php");
     }
     $MIMETypes = array(
         'png' => 'image/png',
@@ -19,7 +19,7 @@
     );
     try {
         require_once 'database_conf.php';
-        $sql = "SELECT * FROM media WHERE fname = :target;";
+        $sql = "SELECT * FROM video WHERE fname = :target;";
         $stmt = $pdo->prepare($sql);
         $stmt -> bindValue(":target", $target, PDO::PARAM_STR);
         $stmt -> execute();
