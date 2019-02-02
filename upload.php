@@ -11,7 +11,7 @@ if($_FILES['file']){
 }
 ?>
 
-<form action="./normal_post1.php" method="POST" enctype="multipart/form-data">
+<form action="upload.php" method="POST" enctype="multipart/form-data">
   <input type="file" name="file">
   <input type="submit" value="ファイルをアップロードする">
 </form>
