@@ -6,7 +6,7 @@
  * Time: 15:49
  */
 
-$file = '/home/ec2-user/media/videos/' . basename($_FILES['file']['name']);
+$file = 'videos/' . basename($_FILES['file']['name']);
 move_uploaded_file($_FILES['file']['tmp_name'], $file);
 
 ?>
