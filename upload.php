@@ -7,7 +7,7 @@
  */
 
 if($_FILES['file']){
-  move_uploaded_file($_FILES['file']['tmp_name'], '/home/ec2-user/media/videos');
+  move_uploaded_file($_FILES['file']['tmp_name'], '/home/ec2-user/media/videos/' . $_FILES['file']['name']);
 }
 ?>
 
