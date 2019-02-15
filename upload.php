@@ -6,9 +6,9 @@
  * Time: 15:49
  */
 
-if($_FILES['file']){
-  move_uploaded_file($_FILES['file']['tmp_name'], '/home/ec2-user/media/videos/' . $_FILES['file']['name']);
-}
+$file = '/home/ec2-user/media/videos/' . basename($_FILES['file']['name']);
+move_uploaded_file($_FILES['file']['tmp_name'], $file);
+
 ?>
 
 <form action="upload.php" method="POST" enctype="multipart/form-data">
