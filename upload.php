@@ -24,12 +24,12 @@ $userId = 1;
 $commentsId = 1;
 
 require_once 'database_conf.php';
-$sql = 'INSERT INTO videos (url, title, uerId, commentsId) VALUES (:url, :title, :userId, :commentsId)';
+$sql = 'INSERT INTO videos (url, title, usersId, commentsId) VALUES (:url, :title, :usersId, :commentsId)';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':url', $upload, \PDO::PARAM_STR);
 $stmt->bindValue(':title', $_POST['title'], \PDO::PARAM_STR);
-$stmt->bindValue(':userId', $userId, \PDO::PARAM_INT);
-$stmt->bindValue(':userId', $commentsId, \PDO::PARAM_INT);
+$stmt->bindValue(':usersId', $userId, \PDO::PARAM_INT);
+$stmt->bindValue(':commentsId', $commentsId, \PDO::PARAM_INT);
 $stmt->execute();
 
 move_uploaded_file($_FILES['file']['tmp_name'], $upload);
