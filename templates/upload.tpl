@@ -6,6 +6,7 @@
 </head>
 <body>
     <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="title"><br>
         <input type="file" name="file">
         <input type="submit" value="ファイルをアップロードする">
     </form>
