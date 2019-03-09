@@ -19,7 +19,7 @@ $smarty->compile_dir = __DIR__ . '/templates_c';
 $newfilename = date("YmdHis")."-".$_FILES['file']['name'];
 //$file = 'videos/' . basename($_FILES['file']['name']);
 
-$upload = './'.$newfilename;
+$upload = 'videos/'.$newfilename;
 $userId = 1;
 $commentsId = 1;
 
