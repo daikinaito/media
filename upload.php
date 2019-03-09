@@ -6,7 +6,7 @@
  * Time: 15:49
  */
 // smarty のライブラリを読み込みます
-include_once __DIR__ . '/libs/Smarty.class.php';
+require_once __DIR__ . '/libs/Smarty.class.php';
 
 // smartyを宣言して設定を書き加えます
 $smarty = new Smarty();
