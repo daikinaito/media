@@ -14,8 +14,9 @@ $smarty->escape_html = true;
 $smarty->template_dir = __DIR__ . '/templates';
 $smarty->compile_dir = __DIR__ . '/templates_c';
 
-
-$file = 'videos/' . basename($_FILES['file']['name']);
-move_uploaded_file($_FILES['file']['tmp_name'], $file);
+$newfilename = date("YmdHis")."-".$_FILES['file']['name'];
+//$file = 'videos/' . basename($_FILES['file']['name']);
+$upload = './'.$newfilename;
+move_uploaded_file($_FILES['file']['tmp_name'], $upload);
 
 $smarty->display('upload.tpl');
