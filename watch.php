@@ -15,8 +15,14 @@ $smarty->escape_html = true;
 $smarty->template_dir = __DIR__ . '/templates';
 $smarty->compile_dir = __DIR__ . '/templates_c';
 
-//if(isset($_SESSION['login'])==false){
-//    header('Location: false.html');
-//}
+session_start();
+
+if(isset($_SESSION['alogin'])==false){
+    header('Location: false.php');
+}
+
+$name=$_SESSION['name'];
+$smarty->assign('name', $name);
+
 
 $smarty->display('watch.tpl');

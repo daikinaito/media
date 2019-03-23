@@ -16,16 +16,20 @@ $smarty->escape_html = true;
 $smarty->template_dir = __DIR__ . '/templates';
 $smarty->compile_dir = __DIR__ . '/templates_c';
 
+session_start();
 
-$userId = 1;
-$commentsId = 1;
+if(isset($_SESSION['login'])==false){
+    header('Location: false.php');
+}
+
+$name=$_SESSION['name'];
+$smarty->assign('name', $name);
 
 require_once 'database_conf.php';
-$sql = 'INSERT INTO videos2 (title, usersId, commentsId) VALUES (:title, :usersId, :commentsId)';
+$sql = 'INSERT INTO videos2 (title, usersId) VALUES (:title, :usersId)';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':title', $_POST['title'], \PDO::PARAM_STR);
-$stmt->bindValue(':usersId', $userId, \PDO::PARAM_INT);
-$stmt->bindValue(':commentsId', $commentsId, \PDO::PARAM_INT);
+$stmt->bindValue(':userId', $_SESSION['id'], \PDO::PARAM_INT);
 $stmt->execute();
 
 $id = $pdo->lastInsertId('id');
