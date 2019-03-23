@@ -11,9 +11,6 @@ $smarty->compile_dir = __DIR__ . '/templates_c';
 if (isset($_POST['id']) && isset($_POST['password'])){
     require_once 'database_conf.php';
     header('Content-Type: text/html; charset=utf8');
-//        $db = new PDO($dsn, $dbUser, $dbPass);
-//        $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-//        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = 'select password,name from users where userId = :userId';
     $stmt = $pdo->prepare($sql);
@@ -28,7 +25,7 @@ if (isset($_POST['id']) && isset($_POST['password'])){
         $_SESSION['id'] = $_POST['id'];
         $_SESSION['login'] = 1;
         $_SESSION['name'] = $name;
-        header('Location: comment.php');
+        header('Location: menu.php');
     }else{
         $message = 'IDまたはパスワードが間違っています。';
         $smarty->assign("message", $message);
