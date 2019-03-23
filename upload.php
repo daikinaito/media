@@ -29,7 +29,7 @@ require_once 'database_conf.php';
 $sql = 'INSERT INTO videos2 (title, usersId) VALUES (:title, :usersId)';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':title', $_POST['title'], \PDO::PARAM_STR);
-$stmt->bindValue(':userId', $_SESSION['id'], \PDO::PARAM_INT);
+$stmt->bindValue(':usersId', $_SESSION['id'], \PDO::PARAM_STR);
 $stmt->execute();
 
 $id = $pdo->lastInsertId('id');
