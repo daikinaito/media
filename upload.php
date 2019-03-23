@@ -16,21 +16,21 @@ $smarty->escape_html = true;
 $smarty->template_dir = __DIR__ . '/templates';
 $smarty->compile_dir = __DIR__ . '/templates_c';
 
-$newfilename = date("YmdHis")."-".$_FILES['file']['name'];
-//$file = 'videos/' . basename($_FILES['file']['name']);
 
-$upload = 'videos/'.$newfilename;
 $userId = 1;
 $commentsId = 1;
 
 require_once 'database_conf.php';
-$sql = 'INSERT INTO videos (url, title, usersId, commentsId) VALUES (:url, :title, :usersId, :commentsId)';
+$sql = 'INSERT INTO videos2 (title, usersId, commentsId) VALUES (:title, :usersId, :commentsId)';
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':url', $upload, \PDO::PARAM_STR);
 $stmt->bindValue(':title', $_POST['title'], \PDO::PARAM_STR);
 $stmt->bindValue(':usersId', $userId, \PDO::PARAM_INT);
 $stmt->bindValue(':commentsId', $commentsId, \PDO::PARAM_INT);
 $stmt->execute();
+
+$id = $pdo->lastInsertId('id');
+
+$upload = 'videos/'.$id.'.mp4';
 
 move_uploaded_file($_FILES['file']['tmp_name'], $upload);
 
