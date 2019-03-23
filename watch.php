@@ -17,7 +17,7 @@ $smarty->compile_dir = __DIR__ . '/templates_c';
 
 session_start();
 
-if(isset($_SESSION['alogin'])==false){
+if(isset($_SESSION['login'])==false){
     header('Location: false.php');
 }
 
