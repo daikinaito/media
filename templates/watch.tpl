@@ -7,6 +7,7 @@
 </head>
 
 <body>
+ようこそ{$name}さん
     <video id="mv" controls autobuffer>
         <source src="videos/1.mp4">
         <p>HTML5に対応していません。</p>
