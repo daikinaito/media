@@ -24,18 +24,21 @@ if(isset($_SESSION['login'])==false){
 
 $name=$_SESSION['name'];
 $smarty->assign('name', $name);
+$title = $_POST['title'];
 
-require_once 'database_conf.php';
-$sql = 'INSERT INTO videos2 (title, usersId) VALUES (:title, :usersId)';
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(':title', $_POST['title'], \PDO::PARAM_STR);
-$stmt->bindValue(':usersId', $_SESSION['id'], \PDO::PARAM_STR);
-$stmt->execute();
+if(isset($title)==true){
+    require_once 'database_conf.php';
+    $sql = 'INSERT INTO videos2 (title, usersId) VALUES (:title, :usersId)';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':title', $title, \PDO::PARAM_STR);
+    $stmt->bindValue(':usersId', $_SESSION['id'], \PDO::PARAM_INT);
+    $stmt->execute();
 
-$id = $pdo->lastInsertId('id');
+    $id = $pdo->lastInsertId('id');
 
-$upload = 'videos/'.$id.'.mp4';
+    $upload = 'videos/'.$id.'.mp4';
 
-move_uploaded_file($_FILES['file']['tmp_name'], $upload);
-
+    move_uploaded_file($_FILES['file']['tmp_name'], $upload);
+}
 $smarty->display('upload.tpl');
+

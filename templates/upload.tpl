@@ -15,4 +15,5 @@
         <source src="videos/ScreenRecording_02-09-2018 17-32-25.mp4">
         <p>HTML5に対応していません。</p>
     </video>
+    <a href="menu.php">メニューへ</a>
 </body
