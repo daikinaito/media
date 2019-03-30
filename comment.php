@@ -6,6 +6,11 @@
  * Time: 15:15
  */
 
+session_start();
+
+if(isset($_SESSION['login'])==false){
+    header('Location: false.php');
+}
 $videoId = 1;
 $currentTime = 10;
 $comment = $_POST['comment'];
