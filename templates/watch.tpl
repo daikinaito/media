@@ -8,7 +8,7 @@
 
 <body>
 ようこそ{$name}さん
-    <form method="POST" autocomplete="off">
+    <form id="form" method="POST" autocomplete="off">
         <input type="text" name="comment">
         <button type="submit">送信</button>
     </form>
