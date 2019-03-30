@@ -6,10 +6,10 @@
  * Time: 15:15
  */
 
-$videoId = $_POST['videoId'];
-$currentTime = $_POST['currentTime'];
+$videoId = 1;
+$currentTime = 10;
 $comment = $_POST['comment'];
-$userId = $_POST['userId'];
+$userId = $_SESSION['id'];
 
 require_once 'database_conf.php';
 $sql = 'INSERT INTO comments (comment, userId, videoId, currentTime, stamp) VALUES (:comment, :userId, :videoId, :currentTime, NOW())';
