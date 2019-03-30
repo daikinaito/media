@@ -24,9 +24,10 @@ if(isset($_SESSION['login'])==false){
 
 $name=$_SESSION['name'];
 $smarty->assign('name', $name);
-$title = $_POST['title'];
 
-if(isset($title)==true){
+
+if(isset($_POST['title'])==true){
+    $title = $_POST['title'];
     require_once 'database_conf.php';
     $sql = 'INSERT INTO videos2 (title, usersId) VALUES (:title, :usersId)';
     $stmt = $pdo->prepare($sql);
