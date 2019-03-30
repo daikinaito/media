@@ -10,7 +10,7 @@
 ようこそ{$name}さん
     <form id="form" method="POST" autocomplete="off">
         <input type="text" name="comment">
-        <button type="submit">送信</button>
+        <input id="button" type="button" value="送信" />
     </form>
     <div id="result"></div>
     <script>
@@ -36,7 +36,7 @@
 
     </script>
     <video id="mv" controls width="300" height="150">
-        <script type="text/javascript" src="time.js"></script>
+        {*<script type="text/javascript" src="time.js"></script>*}
         <source src="videos/3.mp4">
         <p>HTML5に対応していません。</p>
     </video>
